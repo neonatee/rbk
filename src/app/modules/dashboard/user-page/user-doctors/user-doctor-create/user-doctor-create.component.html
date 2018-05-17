@@ -1,0 +1,21 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card ">
+          <div class="card-header card-header-rose card-header-icon">
+            <div class="card-icon">
+              <i class="material-icons">contacts</i>
+            </div>
+            <h4 class="card-title">Horizontal Form</h4>
+          </div>
+          <div class="card-body ">
+
+            <crm-form-creator *ngIf="!Loading" [config]="form" (submitted)="formSubmitted($event)"></crm-form-creator>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

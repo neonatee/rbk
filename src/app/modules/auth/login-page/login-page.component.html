@@ -1,0 +1,107 @@
+
+<div class="wrapper wrapper-full-page">
+    <div class="page-header login-page header-filter"
+         style="background-image: url('https://www.lissod.com.ua/user/images/tp_bg_pink.jpg');">
+        <div class="container">
+            <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto" *ngIf="!successCode">
+                <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="card card-login">
+                        <div class="card-header card-header-rose text-center">
+                            <h4 class="card-title">Вход в систему</h4>
+                        </div>
+                        <div class="card-body" *ngIf="Loading">
+                            <crm-loader></crm-loader>
+                        </div>
+                        <div class="card-body " *ngIf="!Loading">
+                            <span class="bmd-form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">face</i>
+                                    </span>
+                                  </div>
+                                  <input type="text"
+                                         class="form-control"
+                                         placeholder="Login..."
+                                         formControlName="username">
+                                </div>
+                                <div>
+                                    <mat-error
+                                            *ngIf="form.get('username').hasError('required') && form.get('username').touched  && form.get('username').invalid ">Поле обязательно к заполнению</mat-error>
+                                    <mat-error *ngIf="form.get('username').hasError('minlength')">Минимальная длина 5 символов</mat-error>
+                                </div>
+
+                            </span>
+                            <span class="bmd-form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">vpn_key</i>
+                                    </span>
+                                  </div>
+                                  <input type="password"
+                                         class="form-control"
+                                         placeholder="Password..."
+                                         formControlName="password">
+
+                                </div>
+                               <div>
+                                    <mat-error
+                                            *ngIf="form.get('password').hasError('required') && form.get('password').touched  && form.get('password').invalid ">Поле обязательно к заполнению</mat-error>
+                                    <mat-error *ngIf="form.get('password').hasError('minlength')">Минимальная длина 5 символов</mat-error>
+                                </div>
+                              </span>
+                            <span class="bmd-form-group">
+                                <div class="picture-container">
+                                    <div class="picture">
+                                        <input type="file" (change)="loadKey($event.target.files)" id="wizard-picture">
+                                    </div>
+                                </div>
+
+                            </span>
+
+                            <div class="card-footer justify-content-center">
+                                <button type="submit" [disabled]="checkSuccessForm()" class="btn btn-rose btn-lg">Войти
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6 ml-auto mr-auto" *ngIf="successCode">
+                <form class="form" [formGroup]="formCode" (ngSubmit)="onSubmitCode()">
+                    <div class="card card-login">
+                        <div class="card-header card-header-rose text-center">
+                            <h4 class="card-title">Вход в систему</h4>
+                        </div>
+                        <div class="card-body ">
+                            <span class="bmd-form-group">
+                                <div class="input-group">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="material-icons">lock_outline</i>
+                                    </span>
+                                  </div>
+                                  <input type="auth_code"
+                                         class="form-control"
+                                         placeholder="auth_code..."
+                                         formControlName="auth_code">
+                                </div>
+                                <div>
+                                    <mat-error
+                                            *ngIf="formCode.get('auth_code').hasError('required') && formCode.get('auth_code').touched  && formCode.get('auth_code').invalid ">Поле обязательно к заполнению</mat-error>
+                                    <mat-error *ngIf="formCodeError.auth_code">{{formCodeError.auth_code}}</mat-error>
+                                    <mat-error *ngIf="formCode.get('auth_code').hasError('minlength')">Минимальная длина 6 символов</mat-error>
+                                </div>
+
+                            </span>
+                        </div>
+                        <div class="card-footer justify-content-center">
+                            <button type="submit" class="btn btn-rose btn-lg">Войти</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

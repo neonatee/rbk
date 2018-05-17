@@ -1,0 +1,114 @@
+//"src/assets/js/jquery.dataTables.min.js",
+
+.card-user-icon {
+  vertical-align: top;
+  margin-left: 5px;
+}
+
+.nav .nav-item {
+  position: relative;
+}
+
+.nav-pills .nav-item .nav-link {
+  line-height: 24px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 500;
+  min-width: 100px;
+  text-align: center;
+  color: #555;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  padding: 10px 15px;
+}
+
+.nav-tabs .nav-link, .nav-pills .nav-link {
+  padding: 1.4286em 0.8575em;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 0;
+}
+
+.nav-pills .nav-link {
+  border-radius: 0.25rem;
+}
+
+.nav-link {
+  text-transform: uppercase;
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.nav-pills.nav-pills-rose .nav-item .nav-link.active, .nav-pills.nav-pills-rose .nav-item .nav-link.active:focus, .nav-pills.nav-pills-rose .nav-item .nav-link.active:hover {
+  background-color: #e91e63;
+  -webkit-box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(233, 30, 99, 0.4);
+  color: #fff;
+}
+
+.nav-pills .nav-item .nav-link.active {
+  color: #fff;
+  background-color: #9c27b0;
+  -webkit-box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+  box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px rgba(156, 39, 176, 0.4);
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #ffffff;
+  background-color: #2196f3;
+}
+
+.nav-tabs .nav-link, .nav-pills .nav-link {
+  padding: 1.4286em 0.8575em;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 0;
+}
+
+.nav-tabs, .nav-pills {
+  border: 0;
+  border-radius: 3px;
+  padding: 0 15px;
+}
+
+.nav-pills .nav-item i {
+  display: block;
+  font-size: 30px;
+  padding: 15px 0;
+}
+
+.card [class*="card-header-"]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
+  padding: 0;
+  margin-top: 5px;
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+  margin: 0;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.dataTables_wrapper .dataTables_paginate ul.pagination {
+  margin: 2px 0;
+  white-space: nowrap;
+  -ms-flex-pack: end !important;
+  -webkit-box-pack: end !important;
+  justify-content: flex-end !important;
+}
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.pagination > .page-item.active > a.mat-button, .pagination > .page-item.active > a.mat-button:focus, .pagination > .page-item.active > a.mat-button:hover, .pagination > .page-item.active > span, .pagination > .page-item.active > span:focus, .pagination > .page-item.active > span:hover, .pagination .paginate_button.active a, .pagination .paginate_button.active a:focus, .pagination .paginate_button.active a:hover {
+  background-color: #9c27b0;
+  border-color: #9c27b0;
+  color: #fff;
+  -webkit-box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
+}

@@ -1,1 +1,289 @@
-/* You can add global styles to this file, and also import other style files */
+@import "assets/scss/material-dashboard";
+@import "~loaders.css/src/loaders";
+
+.loader .my-loader {
+  background-color: #D32F2F;
+}
+
+.header-filter {
+  position: relative;
+}
+
+.header-filter:before, .header-filter:after {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  left: 0;
+  top: 0;
+  content: ' ';
+}
+
+.header-filter::before {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.header-filter .container {
+  z-index: 2;
+  position: relative;
+}
+
+.purple-filter:after {
+  background: rgba(101, 47, 142, 0.64);
+  background: linear-gradient(45deg, rgba(101, 47, 142, 0.88) 0%, rgba(125, 46, 185, 0.45) 100%);
+  background: -webkit-linear-gradient(135deg, rgba(101, 47, 142, 0.88) 0%, rgba(125, 46, 185, 0.45) 100%);
+}
+
+.login-page > .content, .lock-page > .content {
+  padding-top: 18vh;
+}
+
+.login-page .page-header, .lock-page .page-header {
+  min-height: 100vh;
+  height: auto;
+  display: inherit;
+}
+
+.login-page .page-header .container, .lock-page .page-header .container {
+  padding-top: 18vh !important;
+}
+
+.login-page .card-login {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.login-page .card-login.card-hidden {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -60px, 0);
+  transform: translate3d(0, -60px, 0);
+}
+
+.login-page .card-login .card-header {
+  margin-top: -40px;
+  margin-bottom: 20px;
+}
+
+.login-page .card-login .card-body {
+  padding: 0px 30px 0px 10px;
+}
+
+.login-page .card-login .card-body .input-group .input-group-text {
+  padding: 15px 15px 0 15px;
+}
+
+.login-page .card-login .card-body .input-group .form-control {
+  padding-bottom: 10px;
+  margin: 17px 0 0 0;
+}
+
+.login-page .card-login .social-line .btn {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.login-page .card-login.card-hidden {
+  opacity: 0;
+  -webkit-transform: translate3d(0, -60px, 0);
+  transform: translate3d(0, -60px, 0);
+}
+
+.login-page .footer .container {
+  padding: 0;
+}
+
+.login-page .footer .copyright, .login-page .footer a {
+  color: #FFFFFF;
+}
+
+.wrapper:after {
+  display: table;
+  clear: both;
+  content: '  ';
+}
+
+.wrapper.wrapper-full-page {
+  //height: auto;
+  min-height: 100vh;
+}
+
+.full-page:after, .full-page:before {
+  display: block;
+  content: ' ';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.full-page:before {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.full-page[filter-color= 'purple ']:after, .full-page[filter-color= 'primary ']:after {
+  background: rgba(225, 190, 231, 0.56);
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(60deg, rgba(225, 190, 231, 0.56), rgba(186, 104, 200, 0.95));
+  /* Standard syntax */
+}
+
+.full-page[filter-color= 'purple '].lock-page .form-group .form-control, .full-page[filter-color= 'primary '].lock-page .form-group .form-control {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#9c27b0), to(#9c27b0)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#D2D2D2, #D2D2D2);
+}
+
+.full-page[filter-color= 'blue ']:after, .full-page[filter-color= 'info ']:after {
+  background: rgba(178, 235, 242, 0.56);
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(60deg, rgba(178, 235, 242, 0.56), rgba(77, 208, 225, 0.95));
+  /* Standard syntax */
+}
+
+.full-page[filter-color= 'blue '].lock-page .form-group .form-control, .full-page[filter-color= 'info '].lock-page .form-group .form-control {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#00bcd4), to(#00bcd4)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: linear-gradient(#00bcd4, #00bcd4), linear-gradient(#D2D2D2, #D2D2D2);
+}
+
+.full-page[filter-color= 'green ']:after, .full-page[filter-color= 'success ']:after {
+  background: rgba(165, 214, 167, 0.56);
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(60deg, rgba(165, 214, 167, 0.56), rgba(102, 187, 106, 0.95));
+  /* Standard syntax */
+}
+
+.full-page[filter-color= 'green '].lock-page .form-group .form-control, .full-page[filter-color= 'success '].lock-page .form-group .form-control {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#4caf50), to(#4caf50)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: linear-gradient(#4caf50, #4caf50), linear-gradient(#D2D2D2, #D2D2D2);
+}
+
+.full-page[filter-color= 'orange ']:after, .full-page[filter-color= 'warning ']:after {
+  background: rgba(255, 224, 178, 0.56);
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(60deg, rgba(255, 224, 178, 0.56), rgba(255, 183, 77, 0.95));
+  /* Standard syntax */
+}
+
+.full-page[filter-color= 'orange '].lock-page .form-group .form-control, .full-page[filter-color= 'warning '].lock-page .form-group .form-control {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ff9800), to(#ff9800)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: linear-gradient(#ff9800, #ff9800), linear-gradient(#D2D2D2, #D2D2D2);
+}
+
+.full-page[filter-color= 'red ']:after, .full-page[filter-color= 'danger ']:after {
+  background: rgba(239, 154, 154, 0.56);
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(60deg, rgba(239, 154, 154, 0.56), rgba(239, 83, 80, 0.95));
+  /* Standard syntax */
+}
+
+.full-page[filter-color= 'red '].lock-page .form-group .form-control, .full-page[filter-color= 'danger '].lock-page .form-group .form-control {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#f44336), to(#f44336)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: linear-gradient(#f44336, #f44336), linear-gradient(#D2D2D2, #D2D2D2);
+}
+
+.full-page[filter-color= 'rose ']:after {
+  background: rgba(248, 187, 208, 0.56);
+  /* For browsers that do not support gradients */
+  /* For Safari 5.1 to 6.0 */
+  /* For Opera 11.1 to 12.0 */
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(60deg, rgba(248, 187, 208, 0.56), rgba(240, 98, 146, 0.95));
+  /* Standard syntax */
+}
+
+.full-page[filter-color= 'rose '].lock-page .form-group .form-control {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#e91e63), to(#e91e63)), -webkit-gradient(linear, left top, left bottom, from(#D2D2D2), to(#D2D2D2));
+  background-image: linear-gradient(#e91e63, #e91e63), linear-gradient(#D2D2D2, #D2D2D2);
+}
+
+.full-page[data-image]:after {
+  opacity: .8;
+}
+
+.full-page > .content, .full-page > .footer {
+  position: relative;
+  z-index: 4;
+}
+
+.full-page > .content {
+  min-height: calc(100vh - 80px);
+}
+
+.full-page .full-page-background {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: center center;
+}
+
+.full-page .footer nav > ul a:not(.btn), .full-page .footer, .full-page .footer .copyright a {
+  color: #fff;
+}
+
+.clear-filter:before {
+  display: none;
+}
+
+.dataTables_paginate a {
+  outline: 0;
+}
+
+
+
+
+.pagination > .page-item.active > a.mat-button, .pagination > .page-item.active > span, .pagination .paginate_button.active a {
+  color: #999999;
+}
+
+.pagination .paginate_button a {
+  position: relative;
+  display: block;
+}
+
+.pagination > .page-item > .page-link.mat-button, .pagination > .page-item > span, .pagination .paginate_button a {
+  border: 0;
+  border-radius: 30px !important;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  padding: 0px 11px;
+  margin: 0 3px;
+  min-width: 30px;
+  height: 30px;
+  line-height: 30px;
+  color: #999999;
+  font-weight: 400;
+  font-size: 12px;
+  text-transform: uppercase;
+  background: transparent;
+  text-align: center;
+}
+
+.pagination > .page-item.active > a.mat-button, .pagination > .page-item.active > a.mat-button:focus, .pagination > .page-item.active > a.mat-button:hover, .pagination > .page-item.active > span, .pagination > .page-item.active > span:focus, .pagination > .page-item.active > span:hover, .pagination .paginate_button.active a, .pagination .paginate_button.active a:focus, .pagination .paginate_button.active a:hover {
+  background-color: #9c27b0;
+  border-color: #9c27b0;
+  color: #fff;
+  -webkit-box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
+  box-shadow: 0 4px 5px 0 rgba(156, 39, 176, 0.14), 0 1px 10px 0 rgba(156, 39, 176, 0.12), 0 2px 4px -1px rgba(156, 39, 176, 0.2);
+}
