@@ -22,8 +22,9 @@ export class DashboardGuard implements CanActivate, CanActivateChild {
         }
 
         const subject = new Subject<boolean>();
-        console.log(next.routeConfig.path);
+
         this.authService.getPermissionsByUser(this.authManager.getIdentity().id).subscribe((permissions) => {
+            console.log(next.routeConfig.path);
             this.authManager.setPermissions(permissions);
             if (!this.authManager.can(next.routeConfig.path)) {
                 this.router.navigate(['dashboard/access-denied']);

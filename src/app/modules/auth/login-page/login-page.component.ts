@@ -1,7 +1,8 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../service/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {map} from 'rxjs/operators';
 
 
 declare const $: any;
@@ -28,8 +29,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     formCodeError = {auth_code: undefined};
     successCode = false;
 
+    authLog = false;
+
     constructor(private formBuilder: FormBuilder,
                 private authService: AuthService,
+                private activatedRoute: ActivatedRoute,
                 private router: Router) {
     }
 
@@ -62,6 +66,17 @@ export class LoginPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+
+        const sub = this.activatedRoute.queryParams.subscribe((params) => {
+            if (params.authlog) {
+                this.authLog = true;
+
+            }
+
+        });
+        sub.unsubscribe();
+
+
         if (!window.sessionStorage.getItem('successCode')) {
             this.form = this.formBuilder.group({
                 username: [null, [Validators.required, Validators.minLength(5)]],
@@ -106,7 +121,14 @@ export class LoginPageComponent implements OnInit, OnDestroy {
                 if (user.identity) {
                     window.sessionStorage.setItem('user', JSON.stringify(user.identity));
                     window.sessionStorage.removeItem('successCode');
-                    this.router.navigate(['/dashboard']);
+
+                    if (window.localStorage.getItem('saveUrl')) {
+                        this.router.navigate([window.localStorage.getItem('saveUrl')]);
+                        window.localStorage.removeItem('saveUrl');
+                    } else {
+                        this.router.navigate(['/dashboard']);
+                    }
+
                 } else {
                     this.formCodeError.auth_code = user.status;
                 }

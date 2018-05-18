@@ -11,6 +11,12 @@ export class Security {
     constructor(private authManager: AuthManagerService) {
     }
 
+
+    public isUnauthorized() {
+       this.authManager.logout();
+
+    }
+
     public enCrypt(data: any) {
         const salt = CryptoJS.lib.WordArray.random(256);
         const iv = CryptoJS.lib.WordArray.random(16);

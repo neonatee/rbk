@@ -20,4 +20,7 @@
   justify-content: center;
   margin-bottom: 20px;
 }
-
+.card [class*="card-header-"]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
+  padding: 0;
+  margin-top: 5px;
+}

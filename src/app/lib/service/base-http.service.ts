@@ -2,7 +2,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Security} from '../class/security';
 import {Headers} from '@angular/http';
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 
 declare var $: any;
 
@@ -19,6 +19,7 @@ export class BaseHttpService {
         return this.http.get(this.createUrl(url, params), {
             headers: this.getHeaders()
         }).map((event) => {
+            console.log(this.security.deCrypt(event));
             return this.security.deCrypt(event);
         }).catch((error) => {
             console.log(error);
@@ -50,8 +51,10 @@ export class BaseHttpService {
             console.log(this.security.deCrypt(event));
             return this.security.deCrypt(event);
         }).catch((error) => {
-            console.log(event);
+            console.log(error);
             this.showNotification(error);
+
+
             return Observable.empty();
         });
 
@@ -72,10 +75,6 @@ export class BaseHttpService {
 
     public deleteNotification(message, from = 'bottom', align = 'right') {
 
-        /* if (message.status === 403) {
-             this.router.navigate(['dashboard/access-denied']);
-         }*/
-
         $.notify({
             icon: 'notifications',
             message: `${message.statusText} ${message.status} `
@@ -94,11 +93,16 @@ export class BaseHttpService {
 
     public showNotification(message, from = 'bottom', align = 'right') {
 
+        window.localStorage.setItem('saveUrl', this.router.url);
+        if (message.status === 401) {
+            this.security.isUnauthorized();
+            window.location.href = '/auth?authlog=error';
+        }
         if (message.status === 403) {
-            this.router.navigate(['dashboard/access-denied']);
+            return this.router.navigate(['dashboard/access-denied']);
         }
         if (message.status === 404) {
-            this.router.navigate(['dashboard/not-found']);
+            return this.router.navigate(['dashboard/not-found']);
         }
 
         $.notify({

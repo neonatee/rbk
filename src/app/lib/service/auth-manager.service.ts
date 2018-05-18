@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 
 import {User} from '../interface/user';
+import {Router} from '@angular/router';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class AuthManagerService {
     private logged = false;
     private secretKey: string;
 
-    constructor() {
+    constructor(public router: Router) {
     }
 
     isLogged() {
@@ -65,21 +66,22 @@ export class AuthManagerService {
 
     can(permissionName: string): boolean {
 
-        if (permissionName === 'access-denied' || '**') {
-            return true;
-        }
-
-        let isset = false;
-        Object.keys(this.permissions).forEach(key => {
-            if (key === permissionName) {
-                isset = true;
-            }
-        });
-
-        if (isset) {
+        if (permissionName === 'access-denied' || permissionName === '**') {
             return true;
         } else {
-            return false;
+            let isset = false;
+            Object.keys(this.permissions).forEach(key => {
+                if (key === permissionName) {
+                    isset = true;
+                }
+            });
+
+            if (isset) {
+                return true;
+            } else {
+                return false;
+            }
+
         }
 
     }

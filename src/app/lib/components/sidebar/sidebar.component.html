@@ -32,22 +32,10 @@
             </a>
             <div class="collapse" id="collapseExample">
                 <ul class="nav">
-                    <li class="nav-item">
+                    <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
                         <a [routerLink]="['user/profile', profile.id]" class="nav-link">
                             <span class="sidebar-mini">MП</span>
                             <span class="sidebar-normal">Мой профиль</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a routerLink="doctors" class="nav-link">
-                            <span class="sidebar-mini">Д</span>
-                            <span class="sidebar-normal">Доктора</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="javascript:void(0)" class="nav-link">
-                            <span class="sidebar-mini">S</span>
-                            <span class="sidebar-normal">Settings</span>
                         </a>
                     </li>
                 </ul>
@@ -116,8 +104,9 @@
             <!--Display the submenu items-->
             <div id="{{menuitem.collapse}}" class="collapse" *ngIf="menuitem.type === 'sub'">
                 <ul class="nav">
-                    <li routerLinkActive="active" *ngFor="let childitem of menuitem.children" class="nav-item">
-                        <a [routerLink]="[menuitem.path, childitem.path]" class="nav-link">
+                    <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"
+                        *ngFor="let childitem of menuitem.children" class="nav-item">
+                        <a [routerLink]="[childitem.path]" class="nav-link">
                             <span class="sidebar-mini">{{childitem.ab}}</span>
                             <span class="sidebar-normal">{{childitem.title}}</span>
                         </a>

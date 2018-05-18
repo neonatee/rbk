@@ -4,6 +4,7 @@ import {Router, NavigationEnd} from '@angular/router';
 import {Subscription} from 'rxjs/Subscription';
 import {Location} from '@angular/common';
 import {AuthManagerService} from '../../service/auth-manager.service';
+import {Title} from '@angular/platform-browser';
 
 const misc: any = {
     navbar_menu_visible: 0,
@@ -32,7 +33,8 @@ export class NavbarComponent implements OnInit {
                 private renderer: Renderer,
                 private element: ElementRef,
                 private router: Router,
-                private authManager: AuthManagerService) {
+                private authManager: AuthManagerService,
+                private titleService: Title) {
         this.location = location;
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
@@ -208,21 +210,25 @@ export class NavbarComponent implements OnInit {
         }
     }
 
-    getTitle() {
+    Title() {
+
         let titlee: any = this.location.prepareExternalUrl(this.location.path());
+
         for (let i = 0; i < this.listTitles.length; i++) {
-            if (this.listTitles[i].type === 'link' && this.listTitles[i].path === titlee) {
-                return this.listTitles[i].title;
+            if (this.listTitles[i].type === 'link' && '/dashboard/' + this.listTitles[i].path === titlee) {
+                this.titleService.setTitle(this.listTitles[i].title);
+                return  this.titleService.getTitle();
             } else if (this.listTitles[i].type === 'sub') {
                 for (let j = 0; j < this.listTitles[i].children.length; j++) {
-                    let subtitle = this.listTitles[i].path + '/' + this.listTitles[i].children[j].path;
+                    let subtitle = '/dashboard/' + this.listTitles[i].children[j].path;
                     if (subtitle === titlee) {
-                        return this.listTitles[i].children[j].title;
+                        this.titleService.setTitle(this.listTitles[i].children[j].title);
+                        return  this.titleService.getTitle();
                     }
                 }
             }
         }
-        return 'Dashboard';
+        return  this.titleService.getTitle();
     }
 
     getPath() {

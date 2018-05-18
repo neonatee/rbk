@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'crm-access-denied',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AccessDeniedComponent implements OnInit {
 
-  constructor() { }
+    constructor(private titleService: Title) {
+    }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+        this.titleService.setTitle('Доступ запрещен!');
+    }
 }

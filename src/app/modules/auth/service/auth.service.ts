@@ -30,10 +30,7 @@ export class AuthService extends BaseHttpService {
     }
 
     getPermissionsByUser(id: number) {
-
-
         return this.get('auth/permissions/' + id);
-
     }
 
 }

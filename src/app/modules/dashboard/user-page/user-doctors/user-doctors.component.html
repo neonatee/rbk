@@ -5,7 +5,7 @@
                 <div class="card ">
                     <div class="card-header  card-header-image  card-header-primary">
                         <div class="card-icon">
-                            <i class="material-icons">assignment_ind</i>
+                            <i class="material-icons">person</i>
                         </div>
                         <h4 class="card-header-title">Doctors</h4>
                     </div>
@@ -115,18 +115,16 @@
                                                         <mat-icon>more_vert</mat-icon>
                                                     </button>
                                                     <mat-menu #menu="matMenu">
-                                                        <button mat-menu-item *ngIf="authManager.can('doctors/edit/:id')" [routerLink]="['edit', element.id]">Редактировать
+                                                        <button mat-menu-item
+                                                                *ngIf="authManager.can('doctors/edit/:id')"
+                                                                [routerLink]="['edit', element.id]">Редактировать
                                                         </button>
-                                                        <!--<swal
+                                                        <swal
                                                                 #deleteSwal
-                                                                title="Are you sure?"
-                                                                text="This cannot be undone"
-                                                                type="question"
-                                                                [showCancelButton]="true"
-                                                                [focusCancel]="true"
-                                                                (confirm)="deleteDoctor(element.id)">
-                                                        </swal>--> <!--[swal]="deleteSwal"-->
-                                                        <button mat-menu-item *ngIf="authManager.can('doctors/delete')" (click)="deleteDoctor(element.id)">Удалить
+                                                                [focusCancel]="true">
+                                                        </swal>
+                                                        <button mat-menu-item *ngIf="authManager.can('doctors/delete')"
+                                                                [swal]="deleteSwal" (click)="deleteDoctor(element.id)">Удалить
                                                         </button>
                                                     </mat-menu>
                                                 </td>
@@ -141,14 +139,6 @@
                                                        [pageSizeOptions]="[5, 10, 20]"
                                                        [showFirstLastButtons]="true">
                                         </mat-paginator>
-                                        <mat-form-field>
-                                            <mat-select>
-                                                <mat-option [value]="1">1</mat-option>
-                                                <mat-option [value]="10">10</mat-option>
-                                                <mat-option [value]="20">20</mat-option>
-                                                <mat-option [value]="30">30</mat-option>
-                                            </mat-select>
-                                        </mat-form-field>
                                     </div>
                                 </div>
                             </div>

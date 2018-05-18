@@ -1,22 +1,23 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {UserService} from '../../services/user/user.service';
 
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
 import {merge, of as observableOf} from 'rxjs';
 import {catchError, map, startWith, switchMap} from 'rxjs/operators';
-import {DoctorsTableColumns} from '../../../../lib/interface/doctors';
-
 import * as moment from 'moment';
-import {AuthManagerService} from '../../../../lib/service/auth-manager.service';
-import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
+
+import {AuthManagerService} from '../../../lib/service/auth-manager.service';
+import {PatientService} from '../services/patient/patient.service';
+
+import {PatientsTableColumns} from '../../../lib/interface/patient';
 
 @Component({
-    selector: 'crm-user-doctors',
-    templateUrl: './user-doctors.component.html',
-    styleUrls: ['./user-doctors.component.scss']
+    selector: 'crm-patient-page',
+    templateUrl: './patient-page.component.html',
+    styleUrls: ['./patient-page.component.scss']
 })
-export class UserDoctorsComponent implements OnInit, AfterViewInit {
+export class PatientPageComponent implements OnInit {
     displayedColumns = [];
     resultsLength = 0;
     isLoadingResults = true;
@@ -28,23 +29,18 @@ export class UserDoctorsComponent implements OnInit, AfterViewInit {
     @ViewChild('deleteSwal') private deleteSwal: SwalComponent;
 
     constructor(public authManager: AuthManagerService,
-                public userServise: UserService) {
+                public patientService: PatientService) {
     }
 
+    ngOnInit(): void {
+        this.getPatients();
+    }
 
     getDateFormat(date) {
         return moment.unix(date).format('DD.MM.YYYY HH:mm:ss');
     }
 
-    ngAfterViewInit() {
-
-    }
-
-    ngOnInit(): void {
-        this.getDoctors();
-    }
-
-    getDoctors() {
+    getPatients() {
         this.sort.sortChange.subscribe(() => this.paginator.pageIndex = 0);
 
 
@@ -52,7 +48,7 @@ export class UserDoctorsComponent implements OnInit, AfterViewInit {
             startWith({}),
             switchMap(() => {
                 this.isLoadingResults = true;
-                return this.userServise.getDoctors(
+                return this.patientService.getPatients(
                     this.authManager.getIdentity().id,
                     this.sort.active,
                     this.sort.direction,
@@ -60,12 +56,12 @@ export class UserDoctorsComponent implements OnInit, AfterViewInit {
                     this.paginator.pageSize
                 );
             }),
-            map(doctors => {
+            map(patients => {
                 this.isLoadingResults = false;
                 this.isRateLimitReached = false;
-                this.resultsLength = doctors.count;
-                this.displayedColumns = DoctorsTableColumns;
-                return doctors.data;
+                this.resultsLength = patients.count;
+                this.displayedColumns = PatientsTableColumns;
+                return patients.data;
             }),
             catchError(() => {
                 this.isLoadingResults = false;
@@ -88,7 +84,7 @@ export class UserDoctorsComponent implements OnInit, AfterViewInit {
 
         this.deleteSwal.show().then((result) => {
             if (result.value) {
-                const sub = this.userServise.deleteDoctor(id).subscribe(() => {
+                const sub = this.patientService.deletePatient(id).subscribe(() => {
                     this.deleteSwal.options = {
                         title: 'Deleted!',
                         text: 'Your file has been deleted.',
@@ -98,7 +94,7 @@ export class UserDoctorsComponent implements OnInit, AfterViewInit {
                     };
                     this.deleteSwal.show();
                     setTimeout(() => {
-                        this.getDoctors();
+                        this.getPatients();
                     }, 2000);
                     sub.unsubscribe();
                 });
