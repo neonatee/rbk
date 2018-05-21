@@ -13,6 +13,8 @@ import {UserDoctorEditComponent} from './user-page/user-doctors/user-doctor-edit
 import {UserDoctorCreateComponent} from './user-page/user-doctors/user-doctor-create/user-doctor-create.component';
 
 import {PatientPageComponent} from './patient-page/patient-page.component';
+import {PatientCreateComponent} from './patient-page/patient-create/patient-create.component';
+import {PatientEditComponent} from './patient-page/patient-edit/patient-edit.component';
 
 const routes: Routes = [
     {path: '', redirectTo: 'main', pathMatch: 'full'},
@@ -26,8 +28,8 @@ const routes: Routes = [
     {path: 'doctors/create', component: UserDoctorCreateComponent},
 
     {path: 'patients', component: PatientPageComponent},
-    {path: 'patients/edit/:id', component: UserDoctorEditComponent},
-    {path: 'patients/create', component: UserDoctorCreateComponent},
+    {path: 'patients/edit/:id', component: PatientEditComponent},
+    {path: 'patients/create', component: PatientCreateComponent},
 
     {path: 'access-denied', component: AccessDeniedComponent},
     {path: '**', component: NotFoundComponent}

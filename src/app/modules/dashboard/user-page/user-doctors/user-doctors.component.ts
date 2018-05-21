@@ -37,11 +37,12 @@ export class UserDoctorsComponent implements OnInit, AfterViewInit {
     }
 
     ngAfterViewInit() {
+        this.getDoctors();
 
     }
 
     ngOnInit(): void {
-        this.getDoctors();
+
     }
 
     getDoctors() {
@@ -52,6 +53,12 @@ export class UserDoctorsComponent implements OnInit, AfterViewInit {
             startWith({}),
             switchMap(() => {
                 this.isLoadingResults = true;
+
+                console.log(this.sort.active,
+                    this.sort.direction,
+                    this.paginator.pageIndex,
+                    this.paginator.pageSize);
+
                 return this.userServise.getDoctors(
                     this.authManager.getIdentity().id,
                     this.sort.active,

@@ -24,7 +24,11 @@ export class FormCreatorComponent implements OnInit {
 
     createGroup() {
         const group = this.fb.group({});
-        this.config.forEach(control => group.addControl(control.name, this.fb.control({value: control.value, disabled: control.disabled}, control.validators)));
+        this.config.forEach((control) => {
+
+            group.addControl(control.name, this.fb.control({value: control.value, disabled: control.disabled}, control.validators));
+
+        });
         return group;
     }
 

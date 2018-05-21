@@ -37,7 +37,7 @@ export class PatientService extends BaseHttpService {
         let params = {};
         if (expand) {
             params = {
-                expand: 'locationAll,statusAll,representative'
+                expand: 'locationAll,statusAll,doctorAll'
             };
         }
         return this.get('patient/' + id, params);
@@ -53,6 +53,10 @@ export class PatientService extends BaseHttpService {
 
     deletePatient(id): Observable<any> {
         return this.get('patient/delete-patient/' + id);
+    }
+
+    getPatientSelectFields() {
+        return this.get('patient/select-fields');
     }
 
 

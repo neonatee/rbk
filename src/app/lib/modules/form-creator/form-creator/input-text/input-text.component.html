@@ -3,7 +3,7 @@
   <div class="col-md-9 col-9">
     <mat-form-field>
       <input type="text" matInput [placeholder]="config.placeholder"
-             [formControlName]="config.name" required>
+             [formControlName]="config.name">
       <mat-error *ngIf="group.get(config.name).invalid">{{getErrorMessage(config.name)}}</mat-error>
     </mat-form-field>
   </div>

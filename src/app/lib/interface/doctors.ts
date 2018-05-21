@@ -166,7 +166,7 @@ export class DoctorForm {
                 placeholder: 'Select an option'
             },
             {
-                label: 'Войти',
+                label: 'Сохранить',
                 name: 'submit',
                 type: 'button',
             }

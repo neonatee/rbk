@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
@@ -17,7 +17,7 @@ import {PatientsTableColumns} from '../../../lib/interface/patient';
     templateUrl: './patient-page.component.html',
     styleUrls: ['./patient-page.component.scss']
 })
-export class PatientPageComponent implements OnInit {
+export class PatientPageComponent implements AfterViewInit {
     displayedColumns = [];
     resultsLength = 0;
     isLoadingResults = true;
@@ -32,7 +32,8 @@ export class PatientPageComponent implements OnInit {
                 public patientService: PatientService) {
     }
 
-    ngOnInit(): void {
+
+    ngAfterViewInit() {
         this.getPatients();
     }
 
@@ -48,6 +49,7 @@ export class PatientPageComponent implements OnInit {
             startWith({}),
             switchMap(() => {
                 this.isLoadingResults = true;
+
                 return this.patientService.getPatients(
                     this.authManager.getIdentity().id,
                     this.sort.active,
@@ -110,8 +112,7 @@ export class PatientPageComponent implements OnInit {
             }
         });
 
-
-        /**/
     }
+
 
 }

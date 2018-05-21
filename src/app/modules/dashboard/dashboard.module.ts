@@ -31,6 +31,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 
 import {SweetAlert2Module} from '@toverux/ngx-sweetalert2';
 import { PatientPageComponent } from './patient-page/patient-page.component';
+import { PatientCreateComponent } from './patient-page/patient-create/patient-create.component';
+import { PatientEditComponent } from './patient-page/patient-edit/patient-edit.component';
 
 @NgModule({
     imports: [
@@ -61,7 +63,9 @@ import { PatientPageComponent } from './patient-page/patient-page.component';
         UserDoctorCreateComponent,
         AccessDeniedComponent,
         NotFoundComponent,
-        PatientPageComponent
+        PatientPageComponent,
+        PatientCreateComponent,
+        PatientEditComponent
     ]
 })
 export class DashboardModule {
